@@ -6,11 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <H1><!doctype html>
+    <h1><!doctype html>
         <html lang="zh-CN">
         <head>
           <meta charset="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <title>南方医科大学健美操队｜25级招新</title>
           <meta name="description" content="南方医科大学健美操队 25级招新宣传海报：训练日常、既往荣誉、入队福利、队员心得、报名方式。" />
           <style>
@@ -30,17 +30,11 @@
               --shadow: 0 16px 40px rgba(0,0,0,.35);
               --radius: 22px;
               --radius2: 16px;
-        
-              /* ✅ 竖屏手机优化：把“版心”缩窄，形成竖屏网页 */
-              --maxw: 560px;
-        
-              --safe-top: env(safe-area-inset-top, 0px);
-              --safe-bottom: env(safe-area-inset-bottom, 0px);
+              --maxw: 1080px;
             }
         
             *{ box-sizing:border-box; }
             html,body{ height:100%; }
-            html{ scroll-behavior:smooth; }
             body{
               margin:0;
               color:var(--text);
@@ -72,8 +66,7 @@
             }
         
             a{ color:inherit; text-decoration:none; }
-            .wrap{ width:min(var(--maxw), calc(100% - 28px)); margin:0 auto; }
-        
+            .wrap{ width:min(var(--maxw), calc(100% - 40px)); margin:0 auto; }
             .glass{
               background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
               border:1px solid var(--stroke);
@@ -102,58 +95,43 @@
             /* Top nav */
             .topbar{
               position:sticky; top:0; z-index:50;
-              padding-top: var(--safe-top);
               backdrop-filter: blur(14px);
               -webkit-backdrop-filter: blur(14px);
-              background: linear-gradient(180deg, rgba(7,10,24,.78), rgba(7,10,24,.25));
+              background: linear-gradient(180deg, rgba(7,10,24,.72), rgba(7,10,24,.25));
               border-bottom:1px solid rgba(255,255,255,.10);
             }
             .topbar .inner{
-              width:min(var(--maxw), calc(100% - 28px));
+              width:min(var(--maxw), calc(100% - 40px));
               margin:0 auto;
               display:flex;
               align-items:center;
               justify-content:space-between;
               padding:12px 0;
-              gap:12px;
+              gap:14px;
             }
             .brand{
               display:flex; align-items:center; gap:10px;
-              min-width: 0;
+              min-width: 240px;
             }
             .logo{
               width:34px; height:34px; border-radius:12px;
               background: conic-gradient(from 210deg, var(--accent1), var(--accent2), var(--accent3), var(--accent1));
               box-shadow: 0 10px 25px rgba(124,92,255,.25);
               border:1px solid rgba(255,255,255,.12);
-              flex: 0 0 auto;
             }
             .brand .name{
               display:flex; flex-direction:column;
-              min-width:0;
               line-height:1.05;
             }
-            .brand .name strong{
-              font-size:14px; letter-spacing:.4px;
-              white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-            }
-            .brand .name span{
-              font-size:12px; color:var(--muted2);
-              white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-            }
+            .brand .name strong{ font-size:14px; letter-spacing:.4px; }
+            .brand .name span{ font-size:12px; color:var(--muted2); }
         
-            /* ✅ 竖屏：导航改成可横滑“胶囊” */
             .nav{
-              display:flex;
+              display:flex; flex-wrap:wrap;
               gap:10px;
-              overflow-x:auto;
-              -webkit-overflow-scrolling:touch;
-              padding-bottom:2px;
-              scrollbar-width: none;
+              justify-content:flex-end;
             }
-            .nav::-webkit-scrollbar{ display:none; }
             .nav a{
-              flex:0 0 auto;
               padding:8px 12px;
               border-radius:999px;
               border:1px solid rgba(255,255,255,.10);
@@ -163,18 +141,15 @@
               transition: transform .15s ease, background .15s ease, border-color .15s ease;
             }
             .nav a:hover{ transform: translateY(-1px); background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.18); }
-            .nav a.active{
-              background: rgba(0,229,255,.10);
-              border-color: rgba(0,229,255,.22);
-              color: rgba(255,255,255,.90);
-            }
         
             /* Hero */
-            header.hero{ padding:18px 0 10px; }
+            header.hero{
+              padding:34px 0 18px;
+            }
             .heroCard{
               position:relative;
               overflow:hidden;
-              padding:20px 18px;
+              padding:30px 26px;
             }
             .heroCard::after{
               content:"";
@@ -186,36 +161,39 @@
               pointer-events:none;
               filter:saturate(1.15);
             }
-            /* ✅ 竖屏：Hero 改为单列（不删内容，只改变排版） */
             .heroGrid{
               position:relative;
               display:grid;
-              grid-template-columns: 1fr;
-              gap:14px;
+              grid-template-columns: 1.2fr .8fr;
+              gap:18px;
               z-index:1;
+            }
+            @media (max-width: 900px){
+              .heroGrid{ grid-template-columns:1fr; }
+              .brand{ min-width:auto; }
             }
         
             .heroLeft h1{
               margin:10px 0 10px;
-              font-size: clamp(28px, 6.2vw, 42px);
+              font-size: clamp(28px, 4vw, 42px);
               line-height:1.08;
               letter-spacing:.6px;
             }
             .sub{
-              margin:0 0 14px;
+              margin:0 0 16px;
               color:var(--muted);
-              font-size: 14px;
-              line-height:1.75;
-              max-width: 60ch;
+              font-size: 15px;
+              line-height:1.65;
+              max-width: 52ch;
             }
             .tagline{
               display:flex; flex-wrap:wrap; gap:10px;
-              margin: 12px 0 14px;
+              margin: 12px 0 16px;
             }
         
             .ctaRow{
               display:flex; flex-wrap:wrap; gap:10px;
-              margin-top: 8px;
+              margin-top: 10px;
             }
             .btn{
               display:inline-flex;
@@ -226,7 +204,7 @@
               border:1px solid rgba(255,255,255,.14);
               background: rgba(255,255,255,.06);
               color:var(--text);
-              font-weight: 700;
+              font-weight: 600;
               font-size: 14px;
               transition: transform .15s ease, background .15s ease, border-color .15s ease;
               user-select:none;
@@ -237,10 +215,16 @@
               border-color: rgba(255,255,255,.18);
               box-shadow: 0 14px 30px rgba(124,92,255,.22);
             }
-            .btn .icon{ width:18px; height:18px; display:inline-block; }
+            .btn .icon{
+              width:18px; height:18px; display:inline-block;
+            }
             .btn .icon svg{ width:100%; height:100%; }
         
-            .heroRight{ display:flex; flex-direction:column; gap:12px; }
+            .heroRight{
+              display:flex;
+              flex-direction:column;
+              gap:12px;
+            }
             .stats{
               display:grid;
               grid-template-columns: repeat(2, 1fr);
@@ -254,7 +238,7 @@
             }
             .stat .num{
               font-size: 18px;
-              font-weight: 900;
+              font-weight: 800;
               letter-spacing:.3px;
             }
             .stat .lab{
@@ -283,7 +267,10 @@
               font-size: 13px;
               line-height:1.55;
             }
-            .list li{ display:flex; gap:10px; align-items:flex-start; }
+            .list li{
+              display:flex; gap:10px;
+              align-items:flex-start;
+            }
             .check{
               width:18px; height:18px;
               border-radius:6px;
@@ -296,8 +283,10 @@
             .check svg{ width:12px; height:12px; }
         
             /* Sections */
-            main{ padding: 10px 0 calc(34px + 88px + var(--safe-bottom)); }
-            section{ padding: 18px 0; }
+            main{ padding: 10px 0 34px; }
+            section{
+              padding: 18px 0;
+            }
             .secHead{
               display:flex;
               align-items:flex-end;
@@ -318,11 +307,13 @@
               max-width: 58ch;
             }
         
-            /* ✅ 竖屏：双列内容全部改为单列（不删内容） */
             .grid2{
               display:grid;
-              grid-template-columns: 1fr;
+              grid-template-columns: 1fr 1fr;
               gap:14px;
+            }
+            @media (max-width: 900px){
+              .grid2{ grid-template-columns: 1fr; }
             }
         
             .card{
@@ -365,11 +356,11 @@
               text-align:left;
               color: rgba(255,255,255,.86);
               background: rgba(255,255,255,.05);
-              font-weight: 800;
+              font-weight: 700;
             }
             .sched tr:last-child td{ border-bottom:none; }
         
-            /* Honors timeline（原样保留） */
+            /* Honors timeline */
             .timeline{
               position:relative;
               padding-left: 18px;
@@ -415,7 +406,7 @@
             }
             .titem .event{
               color: rgba(255,255,255,.86);
-              font-weight: 800;
+              font-weight: 700;
               font-size: 13px;
             }
             .titem ul{
@@ -445,11 +436,14 @@
             .badge.blue{ border-color: rgba(0,229,255,.28); background: rgba(0,229,255,.10); }
             .badge.green{ border-color: rgba(53,255,154,.26); background: rgba(53,255,154,.10); }
         
-            /* Benefits（内容不删；版式竖屏更像官方页） */
+            /* Benefits */
             .benefits{
               display:grid;
-              grid-template-columns: 1fr;
+              grid-template-columns: repeat(3, 1fr);
               gap:12px;
+            }
+            @media (max-width: 900px){
+              .benefits{ grid-template-columns: 1fr; }
             }
             .bitem{
               padding:16px 14px;
@@ -481,11 +475,14 @@
               position:relative; z-index:1;
             }
         
-            /* Stories（内容不删，竖屏单列） */
+            /* Stories */
             .quotes{
               display:grid;
-              grid-template-columns: 1fr;
+              grid-template-columns: 1fr 1fr;
               gap:12px;
+            }
+            @media (max-width: 900px){
+              .quotes{ grid-template-columns: 1fr; }
             }
             .quote{
               padding:16px 16px;
@@ -519,12 +516,15 @@
               font-size: 12px;
             }
         
-            /* Signup（原结构保留：左“步骤卡” + 右“信息卡”，但竖屏改为上下排列） */
+            /* Signup */
             .signupGrid{
               display:grid;
-              grid-template-columns: 1fr;
+              grid-template-columns: 1.1fr .9fr;
               gap:14px;
               align-items:stretch;
+            }
+            @media (max-width: 900px){
+              .signupGrid{ grid-template-columns:1fr; }
             }
             .steps{
               display:grid;
@@ -571,11 +571,28 @@
               background: rgba(255,255,255,.05);
               height:100%;
             }
+            .qr{
+              width: 100%;
+              aspect-ratio: 1 / 1;
+              border-radius: 18px;
+              border: 1px dashed rgba(255,255,255,.24);
+              background:
+                linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px) 0 0 / 18px 18px,
+                linear-gradient(180deg, rgba(255,255,255,.08) 1px, transparent 1px) 0 0 / 18px 18px,
+                radial-gradient(circle at 20% 25%, rgba(124,92,255,.22), transparent 45%),
+                radial-gradient(circle at 75% 70%, rgba(0,229,255,.18), transparent 45%),
+                rgba(0,0,0,.16);
+              display:grid;
+              place-items:center;
+              color: rgba(255,255,255,.80);
+              text-align:center;
+              padding: 14px;
+            }
+            .qr small{ color: var(--muted2); display:block; margin-top:6px; line-height:1.5; }
             .qrTitle{
               display:flex; align-items:center; justify-content:space-between; gap:10px;
             }
             .qrTitle strong{ font-size: 14px; }
-        
             .copyBtn{
               cursor:pointer;
               font-size: 12px;
@@ -586,10 +603,8 @@
               background: rgba(255,255,255,.06);
               transition: transform .15s ease, background .15s ease, border-color .15s ease;
               user-select:none;
-              white-space:nowrap;
             }
             .copyBtn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.22); }
-        
             .contact{
               margin:0;
               color: var(--muted);
@@ -599,12 +614,11 @@
             .contact code{
               background: rgba(0,0,0,.18);
               border:1px solid rgba(255,255,255,.10);
-              padding:2px 8px;
-              border-radius: 999px;
-              color: rgba(255,255,255,.90);
+              padding:2px 6px;
+              border-radius: 10px;
+              color: rgba(255,255,255,.88);
               font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
               font-size: 12px;
-              white-space:nowrap;
             }
         
             /* Motion */
@@ -633,50 +647,9 @@
               flex-wrap:wrap;
             }
         
-            /* ✅ 底部浮动栏：一键复制QQ群 + 回顶部（更像“官方手机网页”） */
-            .bottombar{
-              position:fixed;
-              left:0; right:0; bottom:0;
-              padding: 10px 12px calc(10px + var(--safe-bottom));
-              background: linear-gradient(180deg, rgba(7,10,24,.05), rgba(7,10,24,.82));
-              border-top: 1px solid rgba(255,255,255,.10);
-              backdrop-filter: blur(14px);
-              -webkit-backdrop-filter: blur(14px);
-              z-index:80;
-            }
-            .barInner{
-              width:min(var(--maxw), calc(100% - 28px));
-              margin:0 auto;
-              display:flex;
-              gap:10px;
-            }
-            .barBtn{
-              flex:1 1 0;
-              display:inline-flex;
-              align-items:center;
-              justify-content:center;
-              gap:8px;
-              padding: 12px 12px;
-              border-radius: 16px;
-              border:1px solid rgba(255,255,255,.14);
-              background: rgba(255,255,255,.06);
-              font-weight: 850;
-              font-size: 14px;
-              color: rgba(255,255,255,.92);
-              user-select:none;
-              cursor:pointer;
-              transition: transform .15s ease, background .15s ease, border-color .15s ease;
-              white-space:nowrap;
-            }
-            .barBtn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.22); }
-            .barBtn.primary{
-              background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(0,229,255,.70));
-              border-color: rgba(255,255,255,.18);
-            }
-        
             /* Print friendly */
             @media print{
-              .topbar, .bottombar{ position:static; display:none !important; }
+              .topbar{ position:static; }
               body{ background:#0A0F22; }
               .btn, .copyBtn{ display:none !important; }
               .heroCard{ box-shadow:none; }
@@ -685,17 +658,18 @@
             }
           </style>
         </head>
-        
         <body>
+          <!-- ============ 可编辑信息：把下面这些占位内容改成你的真实信息 ============ -->
           <script>
-            // ✅ 已按你的要求：不展示微信，只保留QQ群号，并可一键复制
+            // ✅ 把这些内容改掉即可（不改也能正常运行）
             window.POSTER_INFO = {
               teamName: "南方医科大学健美操队",
               recruitFor: "25级招新",
               slogan: "把热爱跳成荣誉，把汗水练成底气",
-              qqGroup: "913690815",
-              // 你可以自己改这行地点/时间
-              contactLine2: "训练地点：校内体育馆形体房｜训练时间：以队内通知为准",
+              // 联系方式（QQ群：913690815）
+              contactLine1: "招新负责人：张恒——wx：ZH2558724395",
+              contactLine2: "训练地点：<例如：校内体育馆形体房>｜训练时间：<以队内通知为准>",
+              // 备注
               note: "温馨提示：零基础可报名，重视态度与坚持；如有伤病/特殊情况请提前说明。"
             };
           </script>
@@ -973,7 +947,7 @@
                         </div>
                         <ul>
                           <li>获得 <b>六金一银两铜</b> 的耀眼成绩</li>
-                          <li><b>团体总分断层第一</b>，创造学校在该项赛事中的最佳成绩</li>
+                          <li><b>团体总分断层第一</b>，创造学校该项赛事最佳成绩</li>
                         </ul>
                         <div class="hi">
                           <span class="badge gold">6 金</span>
@@ -998,15 +972,11 @@
                       <div class="titem">
                         <div class="top">
                           <span class="year">2022</span>
-                          <span class="event">广东省第十一届大学生运动会（2022年）</span>
+                          <span class="event">广东省第十一届大学生运动会（部分成绩）</span>
                         </div>
                         <ul>
-                          <li>混合双人操 <b>第一名</b></li>
-                          <li>男子单人操 <b>第一名</b></li>
-                          <li>女子单人操 <b>第二名</b></li>
-                          <li>有氧舞蹈 <b>第三名</b></li>
-                          <li>有氧踏板 <b>第五名</b></li>
-                          <li>健美操比赛甲组团体总分 <b>第三名</b></li>
+                          <li>混合双人操 <b>第一名</b>；男子单人操 <b>第一名</b></li>
+                          <li>女子单人操 <b>第二名</b>；有氧舞蹈 <b>第三名</b></li>
                           <li>被评为 <b>“体育道德风尚奖运动队”</b></li>
                         </ul>
                       </div>
@@ -1124,7 +1094,7 @@
                     <div class="steps" aria-label="报名步骤">
                       <div class="step">
                         <div class="n">1</div>
-                        <div class="txt">加入QQ招新群，备注：<b>“25级健美操招新 + 姓名 + 学院”</b>。</div>
+                        <div class="txt">扫码/加负责人微信，备注：<b>“25级健美操招新 + 姓名 + 学院”</b>。</div>
                       </div>
                       <div class="step">
                         <div class="n">2</div>
@@ -1161,23 +1131,31 @@
                     </div>
                   </div>
         
-                  <!-- ✅ 原“二维码卡”保留为“进群信息卡”（不删模块，只替换成QQ群信息 + 复制交互） -->
                   <div class="qrBox reveal">
                     <div class="qrTitle">
-                      <strong>进群咨询 / 报名</strong>
-                      <span class="copyBtn" id="copyBtn" title="复制入群信息到剪贴板">一键复制入群信息</span>
+                      <strong>扫码咨询 / 进招新群</strong>
+                      <span class="copyBtn" id="copyBtn" title="复制联系方式到剪贴板">一键复制联系方式</span>
                     </div>
         
-                    <p class="contact" id="contact1">
-                      QQ招新群：<code id="qqCode">913690815</code>
-                      <span class="copyBtn" id="copyQQ" style="margin-left:8px;">复制群号</span>
-                    </p>
+                    <!--
+                      ✅ 如果你有二维码图片：
+                      1) 把图片放到同级目录（例如：qr.png）
+                      2) 取消下面 img 的注释，并把 src 改成你的文件名
+                      3) 同时可以把上面这个 .qr 占位块删掉
+                    -->
+                    <!-- <img src="qr.png" alt="招新二维码" style="width:100%;border-radius:18px;border:1px solid rgba(255,255,255,.12);" /> -->
         
-                    <p class="contact" id="contact2">训练地点：校内体育馆形体房｜训练时间：以队内通知为准</p>
+                    <div class="qr" aria-label="二维码占位区域">
+                      <div>
+                        <div style="font-weight:900;letter-spacing:.4px</div>
+                        <small><br/>              </div>
+                    </div>
+        
+                    <p class="contact" id="contact1">招新负责人：张恒——wx：ZH2558724395&gt;｜微信：&lt;ZH2558724395&gt;</p>
+                    <p class="contact" id="contact2">训练地点：&lt;形体房&gt;｜训练时间：&lt;以队内通知为准&gt;</p>
         
                     <p class="hint" style="margin:0;">
-                      进群备注：25级 + 姓名 + 学院。<br/>
-                      小贴士：第一次来建议穿运动服 + 运动鞋，带水和毛巾即可。
+                      小贴士：第一次来建议穿运动服 + 运动鞋（如需赤足/软底鞋以队内要求为准），带水和毛巾即可。
                     </p>
                   </div>
                 </div>
@@ -1197,15 +1175,6 @@
             </div>
           </footer>
         
-          <!-- ✅ 底部操作条 -->
-          <div class="bottombar" aria-label="快捷操作">
-            <div class="barInner">
-              <div class="barBtn primary" id="barCopyQQ">复制QQ群</div>
-              <div class="barBtn" id="barToSignup">去报名</div>
-              <div class="barBtn" id="barTop">回顶部</div>
-            </div>
-          </div>
-        
           <script>
             // ======= 填充可编辑信息 =======
             const info = window.POSTER_INFO || {};
@@ -1215,22 +1184,18 @@
             };
         
             setText("brandTitle", `${info.teamName || "南方医科大学健美操队"}｜${info.recruitFor || "25级招新"}`);
-        
+            setText("heroTitle", `${info.teamName || "南方医科大学健美操队"}\n${info.recruitFor || "25级招新"}`.replace("\n","\n"));
+            // heroTitle 用 innerHTML 保留换行：
             const heroTitle = document.getElementById("heroTitle");
             if (heroTitle){
               heroTitle.innerHTML = `${(info.teamName || "南方医科大学健美操队")}<br/>${(info.recruitFor || "25级招新")}`;
             }
             setText("heroPill", `校队招新 · ${(info.recruitFor || "25级新同学")}`);
-        
             const heroSub = document.getElementById("heroSub");
             if (heroSub && info.slogan){
               heroSub.innerHTML = `「${info.slogan}」<br/>` + heroSub.innerHTML;
             }
-        
-            // 只保留QQ群与地点/时间
-            const qqCode = document.getElementById("qqCode");
-            if (qqCode && info.qqGroup) qqCode.textContent = info.qqGroup;
-        
+            setText("contact1", info.contactLine1 || document.getElementById("contact1")?.textContent);
             setText("contact2", info.contactLine2 || document.getElementById("contact2")?.textContent);
             setText("noteLine", info.note || document.getElementById("noteLine")?.textContent);
         
@@ -1238,12 +1203,17 @@
             setText("footTeam", info.teamName || "南方医科大学健美操队");
             setText("footRecruit", info.recruitFor || "25级招新");
         
-            // ======= 复制工具 =======
+            // ======= 一键复制联系方式 =======
+            const copyBtn = document.getElementById("copyBtn");
+            const contact1 = document.getElementById("contact1");
+            const contact2 = document.getElementById("contact2");
+        
             const copyText = async (text) => {
               try{
                 await navigator.clipboard.writeText(text);
                 return true;
               }catch(e){
+                // 兼容旧浏览器：使用 textarea 方案
                 try{
                   const ta = document.createElement("textarea");
                   ta.value = text;
@@ -1260,56 +1230,13 @@
               }
             };
         
-            const flash = (el, okText="已复制 ✅", failText="复制失败") => {
-              if (!el) return;
-              const old = el.textContent;
-              el.textContent = okText;
-              setTimeout(()=> el.textContent = old, 1200);
-            };
-        
-            const getQQ = () => (document.getElementById("qqCode")?.textContent || "").trim();
-            const getJoinInfo = () => {
-              const qq = getQQ();
-              const line2 = (document.getElementById("contact2")?.textContent || "").trim();
-              return `QQ招新群：${qq}\n进群备注：25级 + 姓名 + 学院\n${line2}`.trim();
-            };
-        
-            const copyBtn = document.getElementById("copyBtn");
             if (copyBtn){
               copyBtn.addEventListener("click", async () => {
-                const ok = await copyText(getJoinInfo());
-                flash(copyBtn, ok ? "已复制 ✅" : "复制失败");
+                const text = `${contact1?.textContent || ""}\n${contact2?.textContent || ""}`.trim();
+                const ok = await copyText(text);
+                copyBtn.textContent = ok ? "已复制 ✅" : "复制失败（手动复制）";
+                setTimeout(()=> copyBtn.textContent = "一键复制联系方式", 1400);
               });
-            }
-        
-            const copyQQ = document.getElementById("copyQQ");
-            if (copyQQ){
-              copyQQ.addEventListener("click", async () => {
-                const ok = await copyText(getQQ());
-                flash(copyQQ, ok ? "群号已复制 ✅" : "复制失败");
-              });
-            }
-        
-            // 底部栏按钮
-            const barCopyQQ = document.getElementById("barCopyQQ");
-            if (barCopyQQ){
-              barCopyQQ.addEventListener("click", async () => {
-                const ok = await copyText(getQQ());
-                flash(barCopyQQ, ok ? "群号已复制 ✅" : "复制失败");
-              });
-            }
-        
-            const barToSignup = document.getElementById("barToSignup");
-            if (barToSignup){
-              barToSignup.addEventListener("click", () => {
-                const target = document.querySelector("#signup");
-                if (target) target.scrollIntoView({behavior:"smooth", block:"start"});
-              });
-            }
-        
-            const barTop = document.getElementById("barTop");
-            if (barTop){
-              barTop.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
             }
         
             // ======= 进入视野动画 =======
@@ -1322,33 +1249,11 @@
                 }
               });
             }, { threshold: 0.12 });
+        
             els.forEach(el=> io.observe(el));
-        
-            // ======= 导航高亮（更像“官方页”） =======
-            const navLinks = Array.from(document.querySelectorAll('.nav a[href^="#"]'));
-            const sections = navLinks
-              .map(a => document.querySelector(a.getAttribute("href")))
-              .filter(Boolean);
-        
-            const setActive = (id) => {
-              navLinks.forEach(a=>{
-                const on = a.getAttribute("href") === `#${id}`;
-                a.classList.toggle("active", on);
-              });
-            };
-        
-            const spy = new IntersectionObserver((entries)=>{
-              // 选离顶部最近的可见 section
-              const visible = entries.filter(e=>e.isIntersecting).sort((a,b)=> b.intersectionRatio - a.intersectionRatio)[0];
-              if (visible && visible.target && visible.target.id){
-                setActive(visible.target.id);
-              }
-            }, { threshold: [0.25, 0.35, 0.5] });
-        
-            sections.forEach(sec => spy.observe(sec));
           </script>
         </body>
         </html>
-        </H1>
+        </h1>
 </body>
 </html>
