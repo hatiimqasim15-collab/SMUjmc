@@ -37,20 +37,20 @@
             html,body{ height:100%; }
             body{
   margin:0;
-  color: rgba(255,255,255,.92);
-
+  color:var(--text);
   background:
-    /* 这层是遮罩，让文字更清楚 */
-    linear-gradient(160deg, rgba(7,10,24,.85), rgba(10,26,44,.85)),
-    /* 下面这一层是真正的背景图 */
+    radial-gradient(1200px 800px at 15% 10%, rgba(124,92,255,.24), transparent 55%),
+    radial-gradient(900px 600px at 85% 20%, rgba(0,229,255,.20), transparent 60%),
+    radial-gradient(900px 650px at 65% 90%, rgba(53,255,154,.14), transparent 60%),
+    linear-gradient(160deg, var(--bg1), var(--bg2)),
     url("assets/bg.jpg");
+  background-size: auto, auto, auto, auto, cover;
+  background-position: center, center, center, center, center;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  /* 可选：滚动时背景固定，更有质感（手机有时会卡，卡就删掉这行） */
-  /* background-attachment: fixed; */
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+  overflow-x:hidden;
 }
         
             /* subtle noise */
